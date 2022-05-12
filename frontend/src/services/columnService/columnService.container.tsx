@@ -7,5 +7,5 @@ export const ColumnContainer:FC<ColumnContainerProps> = ({column}) => {
 
   }, [])
 
-  return <Column color={column.color}/>;
+  return <Column color={column.color} name={column.name}/>;
 };

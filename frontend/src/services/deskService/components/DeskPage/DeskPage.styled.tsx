@@ -7,7 +7,7 @@ export const Wrap = styled.div`
   align-items: center;
 `;
 
-export const DeskWrapper = styled.div`
+export const Desk = styled.div`
     height:600px;
     width:100%;
     border-radius: 10px;

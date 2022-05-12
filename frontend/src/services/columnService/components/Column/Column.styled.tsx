@@ -7,3 +7,12 @@ export const Wrap = styled.div<{ color: string | undefined }>`
   border-radius: 20px;
   margin: 0px 10px;
 `;
+
+export const NameWrapper = styled.div`
+  display:flex;
+  justify-content: center;
+
+  padding-top:5px;
+  font-size: 20px;
+  color:white;
+  `
