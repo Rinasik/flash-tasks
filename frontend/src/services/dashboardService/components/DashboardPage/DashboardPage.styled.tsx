@@ -7,12 +7,14 @@ export const Wrap = styled.div`
 `;
 
 export const AddDeskWrapper = styled.div`
+  margin-left: 20px;
   border: 3px dashed grey;
   width: 300px;
   height: 200px;
   border-radius: 20px;
   user-select: none;
 
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,7 +32,6 @@ export const AddDeskWrapper = styled.div`
 
 export const PlusWrapper = styled.div`
   color: white;
-
   font-size: 80px;
 `;
 

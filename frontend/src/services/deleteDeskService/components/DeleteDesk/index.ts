@@ -1,0 +1,1 @@
+export { DeleteDesk } from "./DeleteDesk";

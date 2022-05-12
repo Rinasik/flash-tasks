@@ -5,5 +5,5 @@ import { desksListService } from "./desksListService.models";
 export const DesksListContainer = () => {
   const desksList = useStore(desksListService.outputs.$desksList);
 
-  return <DesksList desksList={desksList} />;
+  return <DesksList desksList={desksList}/>;
 };

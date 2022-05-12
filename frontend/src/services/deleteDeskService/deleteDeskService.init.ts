@@ -1,0 +1,1 @@
+import "./deleteDeskService.relations"
