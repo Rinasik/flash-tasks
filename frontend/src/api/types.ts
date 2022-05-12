@@ -27,6 +27,13 @@ export interface UserResponseDto {
   id: string;
   name: string;
   email: string;
+  avatar: string;
+}
+
+export interface PatchUserDto {
+  name?: string;
+  email?: string;
+  avatar: string;
 }
 
 export interface CreateUserDto {
@@ -36,20 +43,39 @@ export interface CreateUserDto {
   passwordConfirmation: string;
 }
 
+export interface ColumnTinyResponseDto {
+  _id: string;
+  name: string;
+  color?: string;
+}
+
+export interface DeskTinyResponseDto {
+  _id: string;
+  name: string;
+  columns: ColumnTinyResponseDto[];
+}
+
+export interface DesksListResponseDto {
+  items: DeskTinyResponseDto[];
+}
+
+export interface TaskTinyResponseDto {
+  _id: string;
+  title: string;
+  description: string;
+}
+
 export interface ColumnResponseDto {
   _id: string;
   name: string;
   color?: string;
+  tasks: TaskTinyResponseDto[];
 }
 
 export interface DeskResponseDto {
   _id: string;
   name: string;
   columns: ColumnResponseDto[];
-}
-
-export interface DesksListResponseDto {
-  items: DeskResponseDto[];
 }
 
 export interface ColumnCreateDto {
@@ -338,15 +364,17 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * No description
      *
      * @tags users
-     * @name UsersControllerGetOne
-     * @request GET:/api/users/{id}
+     * @name UsersControllerPatchUser
+     * @request PATCH:/api/users
      * @secure
      */
-    usersControllerGetOne: (id: string, params: RequestParams = {}) =>
-      this.request<any, UserResponseDto>({
-        path: `/api/users/${id}`,
-        method: "GET",
+    usersControllerPatchUser: (data: PatchUserDto, params: RequestParams = {}) =>
+      this.request<void, any>({
+        path: `/api/users`,
+        method: "PATCH",
+        body: data,
         secure: true,
+        type: ContentType.Json,
         ...params,
       }),
 
@@ -363,6 +391,22 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
         method: "POST",
         body: data,
         type: ContentType.Json,
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags users
+     * @name UsersControllerGetOne
+     * @request GET:/api/users/{id}
+     * @secure
+     */
+    usersControllerGetOne: (id: string, params: RequestParams = {}) =>
+      this.request<any, UserResponseDto>({
+        path: `/api/users/${id}`,
+        method: "GET",
+        secure: true,
         ...params,
       }),
 

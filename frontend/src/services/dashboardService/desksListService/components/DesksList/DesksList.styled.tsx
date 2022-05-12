@@ -2,9 +2,10 @@ import styled from "styled-components";
 
 export const DeskWrapper = styled.div`
   display: flex;
-  height: 140px;
-  width: 250px;
-  margin: 10px 10px;
+  height: 200px;
+  width: 280px;
+
+  margin-right: 20px;
   border-radius: 15px;
   background-color: var(--main-color-back-deep);
   transition: all 0.2s;
@@ -26,8 +27,7 @@ export const TitleOfDesk = styled.div`
 `;
 
 export const Wrap = styled.div`
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-row-gap: 20px;
 `;

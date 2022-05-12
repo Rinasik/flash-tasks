@@ -1,3 +1,4 @@
+import confirm from "antd/lib/modal/confirm";
 import { FC } from "react";
 import { Button } from "../../../../shared/components/Button";
 import { DeleteDeskProps } from "./DeleteDesk.types";

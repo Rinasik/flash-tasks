@@ -1,1 +1,0 @@
-import "./columnService.relations"

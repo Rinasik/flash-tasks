@@ -1,6 +1,5 @@
-import { forward, sample } from "effector";
+import {  sample } from "effector";
 import { deskService } from "./deskService.models";
-import { GetDeskProps } from "./deskService.types";
 
 deskService.outputs.$desk.on(
   deskService.inputs.getDeskFx.doneData,
@@ -8,7 +7,7 @@ deskService.outputs.$desk.on(
 );
 
 sample({
-  clock: deskService.inputs.GetDesk.open.map(({deskId})=> deskId),
+  clock: deskService.inputs.GetDesk.open.map(({ deskId }) => deskId),
   filter: Boolean,
   target: deskService.inputs.getDeskFx,
 });

@@ -1,3 +1,4 @@
+import confirm from "antd/lib/modal/confirm";
 import { useEvent } from "effector-react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -7,7 +8,7 @@ import { deleteDeskService } from "./deleteDeskService.models";
 
 export const DeleteDeskContainer = () => {
   const navigate = useNavigate();
-  const handleSubmit = useEvent(deleteDeskService.inputs.deleteDesk);
+  const deleteDesk = useEvent(deleteDeskService.inputs.deleteDesk);
   const deleteDeskSuccess = deleteDeskService.outputs.deleteDeskSuccess;
   const deleteDeskFailed = deleteDeskService.outputs.deleteDeskFailed;
 
@@ -21,5 +22,15 @@ export const DeleteDeskContainer = () => {
     []
   );
 
-  return <DeleteDesk  handleSumbit={handleSubmit} />;
+  const handleSubmit = () => {
+    confirm({
+      title: "Delete your desk?",
+      content: "This action cannot be undone",
+      okText: "Delete",
+      cancelText: "Cancel",
+      onOk: () => deleteDesk(),
+    });
+  };
+
+  return <DeleteDesk handleSumbit={handleSubmit} />;
 };

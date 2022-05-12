@@ -1,4 +1,4 @@
-import { ColumnResponseDto } from "../../api/types";
+import { ColumnResponseDto } from "../../../api/types";
 
 export interface Column extends ColumnResponseDto {}
 
