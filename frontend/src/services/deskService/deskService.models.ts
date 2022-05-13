@@ -11,6 +11,8 @@ const getDeskFx = deskServiceDomain.createEffect<string, Desk>(
   getDeskRequest
 );
 
+const $loading = getDeskFx.pending;
+
 const GetDesk = createGate<GetDeskProps>();
 
 export const deskService = {
@@ -20,5 +22,6 @@ export const deskService = {
   },
   outputs: {
     $desk,
+    $loading
   },
 };
