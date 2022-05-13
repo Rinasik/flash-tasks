@@ -39,14 +39,14 @@ export const Modal: FC<ModalProps> = ({
         />
         <StyledModal>
           <CloseWrapper>
-          <Title>{title}</Title>
-          {onHide && (
-            <Close onClick={onHide}>
-              <XLg />
-            </Close>
-          )}
+            <Title>{title}</Title>
+            {onHide && (
+              <Close onClick={onHide}>
+                <XLg />
+              </Close>
+            )}
           </CloseWrapper>
-        <Content>{children}</Content>
+          <Content>{children}</Content>
         </StyledModal>
       </ModalWrap>
     </Wrap>

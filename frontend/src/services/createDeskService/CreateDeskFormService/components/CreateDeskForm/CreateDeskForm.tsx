@@ -29,7 +29,7 @@ export const CreateDeskForm: FC<CreateDeskFormProps> = ({
     useFormik<CreateDeskResponse>({
       initialValues: {
         name: "",
-        columns: [{ name: "", color: "" }] as ColumnCreateDto[],
+        columns: [{ name: "", color: "#ffffff" }] as ColumnCreateDto[],
       },
       validateOnBlur: false,
       validateOnChange: false,

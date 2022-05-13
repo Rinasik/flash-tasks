@@ -26,11 +26,11 @@ export const ModalWrap = styled.div`
 export const openModelAnimation = keyframes`
     0% { 
         opacity: 0; 
-        margin-top: 50px;
+        transform: translateY(-150px);
     }
     100% { 
         opacity: 1; 
-        margin-top: 0px;
+        transform: translateY(0px);
     }
 `;
 
@@ -44,7 +44,7 @@ export const StyledModal = styled.div<{ pending?: boolean }>`
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
   z-index: 101;
   animation-name: ${openModelAnimation};
-  animation-duration: 0.2s;
+  animation-duration: 0.3s;
   ${({ pending }) =>
     pending &&
     `

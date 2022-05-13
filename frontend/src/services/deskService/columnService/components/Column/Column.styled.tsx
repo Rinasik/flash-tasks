@@ -14,4 +14,12 @@ export const NameWrapper = styled.div`
   padding-top: 5px;
   font-size: 20px;
   color: white;
+  user-select: none;
 `;
+
+export const TasksWrapper = styled.div`
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 10px;
+    justify-items: center;
+`

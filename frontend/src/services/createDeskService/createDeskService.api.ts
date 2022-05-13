@@ -4,4 +4,4 @@ import { CreateDeskResponse } from "./createDeskService.types";
 export const createNewDesk = async (
   responseData: CreateDeskResponse
 ): Promise<void> =>
-  await api.post("http://localhost:9000/api/desks", responseData);
+  await api.post("/desks", responseData);

@@ -1,7 +1,9 @@
 import axios from "axios";
 import { authService } from "../services/authService";
 
-export const api = axios.create({});
+export const api = axios.create({
+  baseURL: "http://localhost:9000/api/",
+});
 
 api.interceptors.request.use((config: any) => {
   config.headers.Authorization = `Bearer ${localStorage.getItem(
@@ -24,7 +26,11 @@ api.interceptors.response.use(
     ) {
       originalRequest._isRetry = true;
       try {
-        const tokens = (await axios.post("http://localhost:9000/api/auth/refresh", {refresh:localStorage.getItem("RefreshToken")})).data;
+        const tokens = (
+          await axios.post("/auth/refresh", {
+            refresh: localStorage.getItem("RefreshToken"),
+          })
+        ).data;
         localStorage.setItem("AccessToken", tokens.access);
         localStorage.setItem("RefreshToken", tokens.refresh);
 

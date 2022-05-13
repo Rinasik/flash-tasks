@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const DeskWrapper = styled.div`
   display: flex;
   height: 200px;
-  width: 280px;
+  width: 300px;
 
   margin-right: 20px;
   border-radius: 15px;
@@ -13,7 +13,7 @@ export const DeskWrapper = styled.div`
   cursor: pointer;
 
   &:hover {
-    background-color: #303030;
+    background-color: #ffffff11;
   }
 `;
 
@@ -24,10 +24,4 @@ export const TitleOfDesk = styled.div`
   font-size: 16px;
   font-weight: 500;
   user-select: none;
-`;
-
-export const Wrap = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-row-gap: 20px;
 `;
