@@ -1,4 +1,5 @@
-import { deskService } from "../../../deskService.models";
+import { deskService } from "../../deskService";
+import { taskService } from "../../deskService/taskService/taskService.models";
 
 const $columnsList = deskService.outputs.$desk.map((desk) =>
   desk?.columns.map((column) => ({
@@ -8,8 +9,10 @@ const $columnsList = deskService.outputs.$desk.map((desk) =>
   }))
 );
 
-
 export const createTaskFormService = {
+  inputs: {
+    createTask: taskService.inputs.createTask,
+  },
   outputs: {
     $columnsList,
   },

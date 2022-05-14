@@ -6,8 +6,8 @@ import { DeleteDeskContainer } from "../../../deleteDeskService/deleteDeskServic
 import { DeskPageProps } from "../../deskService.types";
 import { ColumnsWrapper, Desk, Wrap } from "./DeskPage.styled";
 import { Loader } from "../../../../shared/components/Loader";
-import { CreateTaskContainer } from "../../taskService/createTaskService/createTaskService.container";
 import { Button } from "../../../../shared/components/Button";
+import { CreateTaskContainer } from "../../../createTaskService/createTaskService.container";
 
 export const DeskPage: FC<DeskPageProps> = ({
   desk,
@@ -30,15 +30,17 @@ export const DeskPage: FC<DeskPageProps> = ({
                 }}
               >
                 <Title>{desk?.name}</Title>
-                <Button
-                  onClick={handleOpeningModal}
-                  outlined
-                  size="sm"
-                  style={{ color: "var(--main-color)" }}
-                >
-                  Create Task
-                </Button>
-                <DeleteDeskContainer />
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <Button
+                    onClick={handleOpeningModal}
+                    outlined
+                    size="sm"
+                    style={{ color: "var(--main-color)", marginRight: "20px" }}
+                  >
+                    Create Task
+                  </Button>
+                  <DeleteDeskContainer />
+                </div>
               </div>
               <ColumnsWrapper>
                 {desk?.columns.map((column, index) => (

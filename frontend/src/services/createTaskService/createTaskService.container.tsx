@@ -1,5 +1,5 @@
 import { useEvent, useStore } from "effector-react";
-import { useNetworkErrors } from "../../../../hooks/useNetworkErrors";
+import { useNetworkErrors } from "../../hooks/useNetworkErrors";
 import { CreateTaskModal } from "./components/CreateTaskModal";
 import { createTaskService } from "./createTaskService.models";
 

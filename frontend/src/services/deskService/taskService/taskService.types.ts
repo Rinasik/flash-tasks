@@ -8,6 +8,6 @@ export interface TaskContainerProps {
   task?: TaskTinyResponseDto;
 }
 
-export interface Task extends TaskTinyResponseDto {}
+export interface ITask extends TaskTinyResponseDto {}
 
 export interface CreateTaskData extends CreateTaskDto {}

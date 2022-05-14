@@ -1,5 +1,5 @@
 import { createDomain } from "effector";
-import { taskService } from "../taskService.models";
+import { taskService } from "../deskService/taskService";
 
 const createDeskServiceDomain = createDomain("createTaskFormService");
 
@@ -13,7 +13,6 @@ const createTaskFailed = taskService.inputs.createTaskFx.failData;
 
 const $loading = taskService.inputs.createTaskFx.pending;
 
-
 export const createTaskService = {
   inputs: {
     createTask: taskService.inputs.createTask,
@@ -24,6 +23,6 @@ export const createTaskService = {
     $modalIsOpen,
     $loading,
     createTaskSuccess,
-    createTaskFailed
-  }
+    createTaskFailed,
+  },
 };

@@ -11,7 +11,7 @@ export const DeleteDesk: FC<DeleteDeskProps> = ({ handleSumbit }) => {
       outlined
       style={{ color: "var(--main-color)" }}
     >
-      Delete
+      Delete Desk
     </Button>
   );
 };

@@ -4,3 +4,4 @@ export interface CreateDeskFormProps {
   handleSubmit: (payload: CreateDeskDto) => void;
   loading: boolean;
 }
+

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Modal } from "../../../../../../shared/components/Modal";
+import { Modal } from "../../../../shared/components/Modal";
 import { CreateTaskFormContainer } from "../../createTaskFormService/createTaskFormService.container";
 import { CreateTaskModalProps } from "./CreateTaskModal.types";
 
