@@ -8,12 +8,11 @@ export const Wrap = styled.div`
 
 export const AddDeskWrapper = styled.div`
   border: 3px dashed grey;
-  width: 300px;
   height: 200px;
   border-radius: 20px;
   user-select: none;
+  
 
-  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,6 +35,7 @@ export const PlusWrapper = styled.div`
 
 export const DesksWrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   grid-row-gap: 20px;
+  grid-column-gap: 10px;
 `;

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { TaskContainer } from "../../../tasksListService/taskService.container";
+import { TaskContainer } from "../../../taskService/taskService.container";
 import { ColumnProps } from "../../columnService.types";
 import { NameWrapper, TasksWrapper, Wrap } from "./Column.styled";
 
@@ -8,8 +8,11 @@ export const Column: FC<ColumnProps> = ({ color, name, tasks }) => {
     <Wrap color={color}>
       <NameWrapper>{name}</NameWrapper>
       <TasksWrapper>
-      {tasks?.map((task) => <TaskContainer task={task} key={task._id}/>)}
-      <TaskContainer/>
+        {tasks?.map((task) => (
+          <TaskContainer task={task} key={task._id} />
+        ))}
+
+        <TaskContainer />
       </TasksWrapper>
     </Wrap>
   );

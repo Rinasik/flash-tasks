@@ -10,5 +10,5 @@ export interface GetDeskProps {
 export interface DeskPageProps {
   desk: Desk | null;
   loading?: boolean;
-
+  handleOpeningModal: () => void;
 }

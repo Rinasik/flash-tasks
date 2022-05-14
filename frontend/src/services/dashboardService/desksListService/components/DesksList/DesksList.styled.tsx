@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const DeskWrapper = styled.div`
   display: flex;
   height: 200px;
-  width: 300px;
-
+  width: 100%;
+  position: relative;
   margin-right: 20px;
   border-radius: 15px;
   background-color: var(--main-color-back-deep);

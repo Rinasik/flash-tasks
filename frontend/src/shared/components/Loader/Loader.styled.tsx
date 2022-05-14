@@ -27,6 +27,7 @@ export const LoaderWrapper = styled.div`
   border-radius: 50%;
   animation: ${loaderFrames} 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   border-color: #fff transparent transparent transparent;
+
   > div:nth-child(1) {
     animation-delay: -0.45s;
   }

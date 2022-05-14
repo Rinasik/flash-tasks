@@ -1,12 +1,6 @@
 import { createDomain } from "effector";
-import { Column } from "./columnService.types";
+import { deskService } from "../deskService.models";
 
 const columnServiceDomain = createDomain("columnService");
 
-const $column = columnServiceDomain.createStore<Column | null>(null);
-
-export const columnService = {
-    outputs: {
-        $column,
-    }
-};
+export const columnService = {};
