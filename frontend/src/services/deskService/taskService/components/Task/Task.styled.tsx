@@ -12,5 +12,5 @@ export const TaskWrapper = styled.div`
   background-color: #515151a2;
   transition: all 0.2s;
   cursor: pointer;
-  user-select: none;
+  
 `;
