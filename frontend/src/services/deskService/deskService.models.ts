@@ -5,12 +5,14 @@ import { Desk, GetDeskProps } from "./deskService.types";
 
 const deskServiceDomain = createDomain("deskService");
 
-const $desk = deskServiceDomain.createStore<Desk | null>(null);
+const $desk = deskServiceDomain.createStore<Desk>({
+  _id: "",
+  name: "",
+  columns: [],
+});
 
 const getDesk = deskServiceDomain.createEvent();
-const getDeskFx = deskServiceDomain.createEffect<string, Desk>(
-  getDeskRequest
-);
+const getDeskFx = deskServiceDomain.createEffect<string, Desk>(getDeskRequest);
 
 const $loading = getDeskFx.pending;
 
@@ -24,6 +26,6 @@ export const deskService = {
   },
   outputs: {
     $desk,
-    $loading
+    $loading,
   },
 };

@@ -4,6 +4,7 @@ export const Wrap = styled.div`
   margin-top: 50px;
   padding-top: 1px;
   align-items: center;
+  
 `;
 
 export const AddDeskWrapper = styled.div`
@@ -36,6 +37,6 @@ export const PlusWrapper = styled.div`
 export const DesksWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-row-gap: 20px;
+  grid-row-gap: 10px;
   grid-column-gap: 10px;
 `;

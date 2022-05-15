@@ -7,14 +7,8 @@ import { CreateTaskFormProps, TaskForm } from "./CreateTaskForm.types";
 import * as Yup from "yup";
 
 const CreateTaskSchema = Yup.object().shape({
-  title: Yup.string()
-    .min(3, "Title must be at least 3 characters")
-    .max(30)
-    .required("Title is required"),
-  description: Yup.string()
-    .min(3, "Description must be at least 3 characters")
-    .max(30)
-    .required(),
+  title: Yup.string().max(30).required("Title is required"),
+  description: Yup.string().required(),
 });
 
 export const CreateTaskForm: FC<CreateTaskFormProps> = ({
@@ -27,7 +21,7 @@ export const CreateTaskForm: FC<CreateTaskFormProps> = ({
       initialValues: {
         title: "",
         description: "",
-        columnId: `${columnsList[0].name}`,
+        columnId: `${columnsList[0].id}`,
       },
       validateOnBlur: false,
       validateOnChange: false,

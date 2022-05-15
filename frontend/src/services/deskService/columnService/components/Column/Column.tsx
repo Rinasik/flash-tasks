@@ -11,8 +11,6 @@ export const Column: FC<ColumnProps> = ({ color, name, tasks }) => {
         {tasks?.map((task) => (
           <TaskContainer task={task} key={task._id} />
         ))}
-
-        <TaskContainer />
       </TasksWrapper>
     </Wrap>
   );

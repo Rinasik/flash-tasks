@@ -1,4 +1,7 @@
 import { useEvent, useStore } from "effector-react";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+
 import { useParams } from "react-router-dom";
 import { createTaskService } from "../createTaskService";
 import { DeskPage } from "./components/DeskPage";
@@ -16,11 +19,13 @@ export const DeskContainer = () => {
   return (
     <>
       {id && <GetDesk deskId={id} />}
-      <DeskPage
-        desk={desk}
-        loading={loading}
-        handleOpeningModal={handleOpeningModal}
-      />
+      <DndProvider backend={HTML5Backend}>
+        <DeskPage
+          desk={desk}
+          loading={loading}
+          handleOpeningModal={handleOpeningModal}
+        />
+      </DndProvider>
     </>
   );
 };

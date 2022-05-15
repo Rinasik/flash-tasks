@@ -33,9 +33,8 @@ export const DeskPage: FC<DeskPageProps> = ({
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <Button
                     onClick={handleOpeningModal}
-                    outlined
                     size="sm"
-                    style={{ color: "var(--main-color)", marginRight: "20px" }}
+                    style={{ marginRight: "20px" }}
                   >
                     Create Task
                   </Button>

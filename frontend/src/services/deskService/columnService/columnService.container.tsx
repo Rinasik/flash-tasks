@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { ColumnContainerProps } from "./columnService.types";
 import { Column } from "./components/Column";
 

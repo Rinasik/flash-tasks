@@ -1,8 +1,8 @@
 import { deskService } from "../../deskService";
 import { taskService } from "../../deskService/taskService/taskService.models";
 
-const $columnsList = deskService.outputs.$desk.map((desk) =>
-  desk?.columns.map((column) => ({
+const $columnsList = deskService.outputs.$desk?.map((desk) =>
+  desk.columns.map((column) => ({
     id: column._id,
     name: column.name,
     color: column.color,

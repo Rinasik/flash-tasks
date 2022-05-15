@@ -4,6 +4,6 @@ import { TaskWrapper } from "./Task.styled";
 
 export const Task: FC<TaskProps> = ({ title }) => {
   return (
-      <TaskWrapper >{title}</TaskWrapper>
+      <TaskWrapper>{title}</TaskWrapper>
   );
 };
