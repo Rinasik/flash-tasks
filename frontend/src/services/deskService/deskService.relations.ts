@@ -20,6 +20,11 @@ sample({
   target: deskService.inputs.getDeskFx,
 });
 
+forward({
+  from: deskService.inputs.moveTask,
+  to: deskService.inputs.moveTaskFx
+})
+
 deskService.outputs.$desk.on(
   deskService.inputs.moveTask,
   (desk, { fromId, toId, taskId }) => {
@@ -31,11 +36,9 @@ deskService.outputs.$desk.on(
       .find((task) => task._id === taskId);
 
     if (!task) return desk;
-
     return {
       ...desk,
       columns: desk.columns.map((column) => {
-
         if (column._id === fromId) {
           column.tasks = column.tasks.filter((task) => task._id !== taskId);
         }
@@ -49,4 +52,3 @@ deskService.outputs.$desk.on(
     };
   }
 );
-

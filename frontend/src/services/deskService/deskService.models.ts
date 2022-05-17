@@ -1,7 +1,7 @@
 import { createDomain } from "effector";
 import { createGate } from "effector-react";
-import { getDeskRequest } from "./deskService.api";
-import { Desk, GetDeskProps } from "./deskService.types";
+import { getDeskRequest, replaceTaskRequest } from "./deskService.api";
+import { Desk, GetDeskProps, IReplaceTask } from "./deskService.types";
 
 const deskServiceDomain = createDomain("deskService");
 
@@ -16,11 +16,8 @@ const getDeskFx = deskServiceDomain.createEffect<string, Desk>(getDeskRequest);
 
 const $loading = getDeskFx.pending;
 
-const moveTask = deskServiceDomain.createEvent<{
-  fromId: string;
-  toId?: string;
-  taskId: string;
-}>();
+const moveTask = deskServiceDomain.createEvent<IReplaceTask>();
+const moveTaskFx = deskServiceDomain.createEffect<IReplaceTask, void>(replaceTaskRequest)
 
 const GetDesk = createGate<GetDeskProps>();
 
@@ -29,7 +26,8 @@ export const deskService = {
     GetDesk,
     getDesk,
     getDeskFx,
-    moveTask
+    moveTask,
+    moveTaskFx
   },
   outputs: {
     $desk,

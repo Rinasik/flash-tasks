@@ -95,6 +95,12 @@ export interface CreateTaskDto {
   columnId: string;
 }
 
+export interface ReplaceTaskRequestPayloadDto {
+  fromId: string;
+  toId: string;
+  taskId: string;
+}
+
 export type QueryParamsType = Record<string | number, any>;
 export type ResponseFormat = keyof Omit<Body, "body" | "bodyUsed">;
 
@@ -487,6 +493,24 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
     tasksControllerCreateTask: (data: CreateTaskDto, params: RequestParams = {}) =>
       this.request<void, any>({
         path: `/api/tasks`,
+        method: "POST",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags tasks
+     * @name TasksControllerReplaceTask
+     * @request POST:/api/tasks/replaceColumn
+     * @secure
+     */
+    tasksControllerReplaceTask: (data: ReplaceTaskRequestPayloadDto, params: RequestParams = {}) =>
+      this.request<void, any>({
+        path: `/api/tasks/replaceColumn`,
         method: "POST",
         body: data,
         secure: true,
