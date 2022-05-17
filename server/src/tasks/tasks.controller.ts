@@ -2,6 +2,7 @@ import { Body, Controller, Get, Post } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { Auth, UserId } from 'src/auth/auth.decorator';
 import { CreateTaskDto } from './dto/create-task.dto';
+import { ReplaceTaskRequestPayloadDto } from './dto/replace-task.dto';
 import { TasksService } from './tasks.service';
 
 @Controller('tasks')
@@ -13,5 +14,11 @@ export class TasksController {
   @Auth()
   createTask(@Body() createTaskDto: CreateTaskDto, @UserId() userId: string) {
     return this.tasksService.createTask(createTaskDto, userId);
+  }
+
+  @Post('replaceColumn')
+  @Auth()
+  replaceTask(@Body() replaceTaskDto: ReplaceTaskRequestPayloadDto) {
+    return this.tasksService.replaceTaskColumn(replaceTaskDto);
   }
 }
