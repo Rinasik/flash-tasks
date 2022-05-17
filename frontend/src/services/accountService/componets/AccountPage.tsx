@@ -7,7 +7,6 @@ export const AccountPage = () => {
     <Layout>
       <Wrap>
         <AvatarBar>
-          <AvatarWrapper />
           <UploadAvatarContainer />
         </AvatarBar>
       </Wrap>
