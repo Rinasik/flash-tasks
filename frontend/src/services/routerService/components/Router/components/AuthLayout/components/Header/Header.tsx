@@ -22,7 +22,9 @@ export const Header: FC<HeaderProps> = ({ me, handleSubmit }) => {
               <Logo>TodoList</Logo>
             </Link>
             <UserWrapper>
+              <Link to="/Account">
               <UserName>{me?.name}</UserName>
+              </Link>
               <Button
                 size="sm"
                 onClick={handleSubmit}

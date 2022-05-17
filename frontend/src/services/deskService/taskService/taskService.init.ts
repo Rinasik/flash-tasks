@@ -1,2 +1,1 @@
-import "../../createTaskService/createTaskService.relations";
-import "./taskService.relations"
+import "./taskService.relations";

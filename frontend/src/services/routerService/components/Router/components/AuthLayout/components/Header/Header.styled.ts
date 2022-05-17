@@ -33,6 +33,7 @@ export const Wrapper = styled.div`
 
 export const UserName = styled.div`
   cursor: pointer;
+  user-select: none;
   color: white;
   font-weight: 450;
   font-size: 15px;

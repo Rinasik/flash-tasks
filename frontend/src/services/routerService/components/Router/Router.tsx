@@ -10,6 +10,7 @@ import { authService } from "../../../authService";
 import { useStore } from "effector-react";
 import {  DashboardPageContainer } from "../../../dashboardService/dashboardService.container";
 import { DeskContainer } from "../../../deskService/deskService.container";
+import { AccountPageContainer } from "../../../accountService/accountService.container";
 
 export const Router = () => {
   const isAuth = useStore(authService.outputs.$isAuth);
@@ -31,8 +32,9 @@ export const Router = () => {
         {isAuth && (
           <Route path="/" element={<AuthLayout />}>
             <Route path="/Dashboard" element={<DashboardPageContainer />} />
-            <Route path="*"  element={<Navigate to="/Dashboard" />} />
+            <Route path="Account" element={<AccountPageContainer/>}/>
             <Route path="/Desk/:id" element={<DeskContainer/>}/>
+            <Route path="*"  element={<Navigate to="/Dashboard" />} />
           </Route>
         )}
       </Routes>

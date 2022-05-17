@@ -35,6 +35,7 @@ deskService.outputs.$desk.on(
     return {
       ...desk,
       columns: desk.columns.map((column) => {
+
         if (column._id === fromId) {
           column.tasks = column.tasks.filter((task) => task._id !== taskId);
         }
