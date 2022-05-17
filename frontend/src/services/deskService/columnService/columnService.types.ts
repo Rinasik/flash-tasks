@@ -1,15 +1,14 @@
+import { ConnectDropTarget } from "react-dnd";
 import { ColumnResponseDto } from "../../../api/types";
-import { ITask } from "../taskService/taskService.types";
 
 export interface Column extends ColumnResponseDto {}
 
 export interface ColumnProps {
-  color?: string;
-  name?: string;
-  tasks?: ITask[]
+  column: Column;
+  dropRef?: ConnectDropTarget;
+  isOver: boolean;
 }
 
 export interface ColumnContainerProps {
   column: Column;
 }
-

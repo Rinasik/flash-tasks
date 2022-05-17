@@ -1,17 +1,19 @@
 import { FC } from "react";
 import { TaskContainer } from "../../../taskService/taskService.container";
 import { ColumnProps } from "../../columnService.types";
-import { NameWrapper, TasksWrapper, Wrap } from "./Column.styled";
+import { DropableTask, NameWrapper, TasksWrapper, Wrap } from "./Column.styled";
 
-export const Column: FC<ColumnProps> = ({ color, name, tasks }) => {
+
+export const Column: FC<ColumnProps> = ({ isOver, dropRef, column}) => {
   return (
-    <Wrap color={color}>
-      <NameWrapper>{name}</NameWrapper>
-      <TasksWrapper>
-        {tasks?.map((task) => (
-          <TaskContainer task={task} key={task._id} />
-        ))}
-      </TasksWrapper>
-    </Wrap>
+      <Wrap color={column.color} ref={dropRef}>
+        <NameWrapper>{column.name}</NameWrapper>
+        <TasksWrapper>
+          {column.tasks?.map((task) => (
+            <TaskContainer task={task} key={task._id} parentColumnId={column._id}/>
+          ))}
+          {isOver && <DropableTask/> }
+        </TasksWrapper>
+      </Wrap>
   );
 };

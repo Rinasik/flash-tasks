@@ -1,11 +1,10 @@
 import { useEvent, useStore } from "effector-react";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
-
 import { useParams } from "react-router-dom";
 import { createTaskService } from "../createTaskService";
 import { DeskPage } from "./components/DeskPage";
 import { deskService } from "./deskService.models";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { DndProvider } from "react-dnd";
 
 export const DeskContainer = () => {
   const desk = useStore(deskService.outputs.$desk);
