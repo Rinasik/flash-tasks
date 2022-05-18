@@ -1,9 +1,22 @@
-import { useEvent } from "effector-react"
-import { UploadAvatar } from "./components/UploadAvatar"
-import { uploadAvatarService } from "./uploadAvatarService.models"
+import { useEvent } from "effector-react";
+import { ChangeEvent } from "react";
+import { UploadAvatar } from "./components/UploadAvatar";
+import { uploadAvatarService } from "./uploadAvatarService.models";
 
 export const UploadAvatarContainer = () => {
-    const handleUpload = useEvent(uploadAvatarService.inputs.setAvatar)
-    
-    return <UploadAvatar handleUpload={handleUpload}/>
-}
+  const handleUpload = useEvent(uploadAvatarService.inputs.setAvatar);
+
+  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files[0]) {
+      const img = event.target.files[0];
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        console.log(reader.result)
+      }
+      reader.readAsDataURL(img);
+      handleUpload && handleUpload({ image: img, type: img.type });
+    }
+  };
+
+  return <UploadAvatar handleChange={onChange} />;
+};

@@ -1,1 +1,1 @@
-import {accountService} from "./accountService.models"
+import { accountService } from "./accountService.models";
