@@ -38,7 +38,6 @@ export class FilesController {
     return response;
   }
 
-  @Auth()
   @Get('image/:path')
   seeUploadedFile(@Param('path') image: string, @Res() res: Response) {
     return res.sendFile(image, { root: './files' });
