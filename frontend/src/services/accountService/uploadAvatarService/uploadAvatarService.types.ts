@@ -1,3 +1,5 @@
+import { ChangeEvent } from "react";
+
 export interface UploadAvatarProps {
-    handleUpload: (avatar?:string) => void
+    handleChange: (event:ChangeEvent<HTMLInputElement>) => void
 }
