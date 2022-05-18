@@ -1,3 +1,3 @@
 export interface UploadAvatarProps {
-    handleUpload: (avatar:string) => void
+    handleUpload: (avatar?:string) => void
 }

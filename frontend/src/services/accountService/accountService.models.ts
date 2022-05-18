@@ -3,7 +3,7 @@ import { setAvatarRequest } from "./accountService.api";
 
 const accountServiceDomain = createDomain("accountService");
 
-const setAvatar = accountServiceDomain.createEvent<string>();
+const setAvatar = accountServiceDomain.createEvent<string | undefined>();
 const setAvatarFx = accountServiceDomain.createEffect<string, void>(
   setAvatarRequest
 );
