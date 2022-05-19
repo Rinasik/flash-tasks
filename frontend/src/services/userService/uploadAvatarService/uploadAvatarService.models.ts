@@ -8,13 +8,18 @@ const $modalIsOpen = uploadAvatarServiceDomain.createStore(false);
 const openModal = uploadAvatarServiceDomain.createEvent();
 const closeModal = uploadAvatarServiceDomain.createEvent();
 
+const setAvatarFailed = userService.inputs.setAvatarFx.failData;
+const setAvatarSuccess = userService.inputs.setAvatarFx.doneData;
+
 export const uploadAvatarService = {
   inputs: {
     setAvatar: userService.inputs.setAvatar,
     openModal,
-    closeModal
+    closeModal,
   },
-  outputs:{
-    $modalIsOpen
-  }
+  outputs: {
+    $modalIsOpen,
+    setAvatarFailed,
+    setAvatarSuccess,
+  },
 };

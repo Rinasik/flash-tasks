@@ -22,8 +22,6 @@ const setAvatarFx = userServiceDomain.createEffect<ISetAvatar, PatchUserDto>(
   setAvatarRequest
 );
 
-const setAvatarFailed = setAvatarFx.failData;
-const setAvatarSuccess = setAvatarFx.doneData;
 
 export const userService = {
   inputs: {
@@ -34,7 +32,5 @@ export const userService = {
   },
   outputs: {
     $me,
-    setAvatarFailed,
-    setAvatarSuccess,
   },
 };

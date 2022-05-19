@@ -6,6 +6,7 @@ userService.outputs.$me.on(
   (_, me) => me
 ).on(userService.inputs.setAvatarFx.doneData, (user, patchedUser) => ({...user, avatar: patchedUser.avatar}));
 
+
 forward({
   from: userService.inputs.GetUserGate.open,
   to: userService.inputs.getUserFx,
@@ -17,3 +18,4 @@ sample({
   fn: (sourceData, clockData) => ({data: clockData, user: sourceData}),
   target: userService.inputs.setAvatarFx
 })
+
