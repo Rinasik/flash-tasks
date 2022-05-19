@@ -9,11 +9,6 @@ export const UploadAvatarContainer = () => {
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
       const img = event.target.files[0];
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        console.log(reader.result)
-      }
-      reader.readAsDataURL(img);
       handleUpload && handleUpload({ image: img, type: img.type });
     }
   };

@@ -10,7 +10,7 @@ import { authService } from "../../../authService";
 import { useStore } from "effector-react";
 import {  DashboardPageContainer } from "../../../dashboardService/dashboardService.container";
 import { DeskContainer } from "../../../deskService/deskService.container";
-import { AccountPageContainer } from "../../../accountService/accountService.container";
+import { AccountPageContainer } from "../../../userService/userService.container";
 
 export const Router = () => {
   const isAuth = useStore(authService.outputs.$isAuth);
