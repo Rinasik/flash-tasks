@@ -9,6 +9,7 @@ export interface IAvatarRequest {
 
 export interface AccountPageProps {
   userData: User | null;
+  handleOpeningModal?: () => void;
 }
 
 export interface ISetAvatar {

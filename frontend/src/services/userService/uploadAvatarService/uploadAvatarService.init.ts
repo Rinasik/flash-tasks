@@ -1,0 +1,1 @@
+import "./uploadAvatarService.relations"

@@ -4,17 +4,22 @@ import { UploadAvatarContainer } from "../uploadAvatarService/uploadAvatarServic
 import { AccountPageProps } from "../userService.types";
 import { ImageWrapper, Wrap } from "./AccountPage.styled";
 
-export const AccountPage: FC<AccountPageProps> = ({ userData }) => {
+export const AccountPage: FC<AccountPageProps> = ({
+  userData,
+  handleOpeningModal,
+}) => {
   return (
-    <Layout>
-      <Wrap>
-        <ImageWrapper>
-          <img
-            src={`http://localhost:9000/api/files/image/${userData?.avatar}`}
-          />
-        </ImageWrapper>
-        <UploadAvatarContainer />
-      </Wrap>
-    </Layout>
+    <>
+      <UploadAvatarContainer />
+      <Layout>
+        <Wrap>
+          <ImageWrapper onClick={handleOpeningModal}>
+            <img
+              src={`http://localhost:9000/api/files/image/${userData?.avatar}`}
+            />
+          </ImageWrapper>
+        </Wrap>
+      </Layout>
+    </>
   );
 };
