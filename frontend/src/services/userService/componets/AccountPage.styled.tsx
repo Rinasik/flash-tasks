@@ -6,19 +6,18 @@ export const Wrap = styled.div`
   align-items: center;
 `;
 
-
-export const AvatarBar = styled.div`
-  height: 160px;
+export const ImageWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-export const AvatarWrapper = styled.div`
-  height: 100px;
-  width: 100px;
+  overflow: hidden;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
-  background-color: grey;
 
-  cursor: pointer;
+  > img {
+    width: 100%;
+    height: 100%;
+    -webkit-user-drag: none;
+  }
 `;
