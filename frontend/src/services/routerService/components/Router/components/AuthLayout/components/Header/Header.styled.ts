@@ -31,15 +31,36 @@ export const Wrapper = styled.div`
   align-items: center;
 `;
 
+export const AssociatingWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 export const UserName = styled.div`
   cursor: pointer;
   user-select: none;
   color: white;
   font-weight: 450;
   font-size: 15px;
+  margin-left: 15px;
 `;
 
-export const UserWrapper = styled.div`
-  display: flex;
-  align-items: center;
+export const ImageWrapper = styled.div`
+  position: relative;
+  overflow: hidden;
+
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+
+  user-select: none;
+  cursor: pointer;
+
+  > img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    -webkit-user-drag: none;
+  }
 `;

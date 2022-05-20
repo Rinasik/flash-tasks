@@ -7,17 +7,21 @@ export const Wrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
 `;
 
 export const ImageWrapper = styled.div`
   margin-top: 40px;
   position: relative;
   overflow: hidden;
+
   width: 120px;
   height: 120px;
   border-radius: 50%;
   border: 2px solid #ffffff11;
+
+  transition: all 0.2s;
+  user-select: none;
+  cursor: pointer;
 
   &:hover {
     border: 2px solid var(--main-color);
@@ -31,3 +35,4 @@ export const ImageWrapper = styled.div`
     -webkit-user-drag: none;
   }
 `;
+

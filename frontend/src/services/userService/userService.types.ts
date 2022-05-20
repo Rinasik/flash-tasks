@@ -2,7 +2,7 @@ import { UserResponseDto } from "../../api/types";
 
 export interface User extends UserResponseDto {}
 
-export interface IAvatarRequest {
+export interface AvatarPayload {
   image: File;
   type: string;
 }
@@ -12,7 +12,7 @@ export interface AccountPageProps {
   handleOpeningModal?: () => void;
 }
 
-export interface ISetAvatar {
-  data: IAvatarRequest;
+export interface SetAvatarPayload {
+  data: AvatarPayload;
   user: User | null;
 }

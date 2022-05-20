@@ -10,7 +10,7 @@ export const UploadAvatarModal: FC<UploadAvatarModalProps> = ({
 }) => {
   return (
     <Modal show={show} title={"Upload avatar"} onHide={handleClosingModal}>
-      <UploadAvatarInput handleChange={handleChange}/>
+      <UploadAvatarInput handleChange={handleChange} />
     </Modal>
   );
 };

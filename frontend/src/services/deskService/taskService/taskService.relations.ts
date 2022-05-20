@@ -6,11 +6,14 @@ import { taskService } from "./taskService.models";
 sample({
   source: taskService.inputs.GetDesk.state,
   clock: taskService.inputs.createTask,
-  fn: (sourceData: GetDeskProps, clockData :TaskForm) => ({...clockData, ...sourceData}),
+  fn: (sourceData: GetDeskProps, clockData: TaskForm) => ({
+    ...clockData,
+    ...sourceData,
+  }),
   target: taskService.inputs.createTaskFx,
 });
 
 forward({
   from: taskService.inputs.createTaskFx.doneData,
-  to: taskService.inputs.reloadDesk
-})
+  to: taskService.inputs.reloadDesk,
+});

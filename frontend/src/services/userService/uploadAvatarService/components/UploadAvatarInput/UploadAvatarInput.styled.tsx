@@ -6,10 +6,11 @@ export const Wrapper = styled.div`
   align-items: center;
   flex-direction: column;
 
-  width: 95%;
-  height: 150px;
+  width: 100%;
+  height: 200px;
   border: 3px dashed grey;
   border-radius: 4px;
+  margin-top: 10px;
   
   box-sizing: border-box;
 

@@ -1,8 +1,7 @@
-import { AxiosPromise, AxiosResponse } from "axios";
-import { ArrowFunction } from "typescript";
+import {  AxiosResponse } from "axios";
 import { api } from "../../api/axios";
 import { PatchUserDto, UserResponseDto } from "../../api/types";
-import { IAvatarRequest, ISetAvatar, User } from "./userService.types";
+import { AvatarPayload, SetAvatarPayload } from "./userService.types";
 
 export const getMe = async (): Promise<UserResponseDto> => {
   return (await api.get("/users/me")).data;
@@ -11,10 +10,10 @@ export const getMe = async (): Promise<UserResponseDto> => {
 export const setAvatarRequest = async ({
   data,
   user,
-}: ISetAvatar): Promise<PatchUserDto> => {
+}: SetAvatarPayload): Promise<PatchUserDto> => {
   const { filename } = (
     await api.post<
-      IAvatarRequest,
+      AvatarPayload,
       AxiosResponse<{ filename: string; originalname: string }>
     >("/files/image", data, {
       headers: {
