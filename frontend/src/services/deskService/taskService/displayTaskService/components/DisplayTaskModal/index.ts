@@ -1,1 +1,1 @@
-export {DisplayTaskModal} from "./DisplayTaskModal"
+export { DisplayTaskModal } from "./DisplayTaskModal";

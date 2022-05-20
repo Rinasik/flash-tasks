@@ -1,1 +1,1 @@
-export {displayTaskService} from "./displayTaskService.models"
+export { displayTaskService } from "./displayTaskService.models";
