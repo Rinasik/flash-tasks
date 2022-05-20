@@ -2,10 +2,11 @@ import { useEvent } from "effector-react";
 import { FC } from "react";
 import { useDrag } from "react-dnd";
 import { Task } from "./components/Task";
-import { taskService } from "./taskService.models";
+import { displayTaskService } from "./displayTaskService";
 import { TaskContainerProps } from "./taskService.types";
 
 export const TaskContainer: FC<TaskContainerProps> = ({ task, parentColumnId }) => {
+  const handleOpeningModal = useEvent(displayTaskService.inputs.openModal)
 
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "task",
@@ -17,9 +18,10 @@ export const TaskContainer: FC<TaskContainerProps> = ({ task, parentColumnId }) 
 
   return (
     <Task
-      title={task?.title}
+      task={task}
       dragRef={drag}
       isDragging={isDragging}
+      handleOpeningModal={handleOpeningModal}
     />
   );
 };

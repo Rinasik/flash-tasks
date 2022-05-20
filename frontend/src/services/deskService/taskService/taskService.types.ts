@@ -2,8 +2,9 @@ import { ConnectDragSource } from "react-dnd";
 import { CreateTaskDto, TaskTinyResponseDto } from "../../../api/types";
 
 export interface TaskProps {
+  handleOpeningModal: (taskId: string) => void;
   dragRef?: ConnectDragSource;
-  title?: string;
+  task?: ITask;
   isDragging: boolean;
 }
 

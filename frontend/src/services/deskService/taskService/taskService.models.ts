@@ -18,7 +18,6 @@ export const taskService = {
     reloadDesk: deskService.inputs.getDesk,
     createTask,
     createTaskFx,
-
   },
 
 };

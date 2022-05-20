@@ -8,6 +8,7 @@ import { ColumnsWrapper, Desk, Wrap } from "./DeskPage.styled";
 import { Loader } from "../../../../shared/components/Loader";
 import { Button } from "../../../../shared/components/Button";
 import { CreateTaskContainer } from "../../../createTaskService/createTaskService.container";
+import { DisplayTaskContainer } from "../../taskService/displayTaskService/displayTaskService.container";
 
 export const DeskPage: FC<DeskPageProps> = ({
   desk,
@@ -16,6 +17,7 @@ export const DeskPage: FC<DeskPageProps> = ({
 }) => {
   return (
     <>
+      <DisplayTaskContainer/>
       <CreateTaskContainer />
       <Layout>
         <Wrap>
