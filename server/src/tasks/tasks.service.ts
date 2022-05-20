@@ -4,6 +4,7 @@ import { Model } from 'mongoose';
 import { DeskDocument } from 'src/desks/schemas/desk.schema';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { ReplaceTaskRequestPayloadDto } from './dto/replace-task.dto';
+import { TaskResponseDto } from './dto/task-response.dto';
 import { Task, TaskDocument } from './schemas/task.schema';
 
 @Injectable()
@@ -72,5 +73,11 @@ export class TasksService {
     await Promise.all([task.save(), desk.save()]);
 
     return 'success';
+  }
+
+  async getTaskById(id: string): Promise<TaskResponseDto> {
+    const task = await this.taskModel.findById(id);
+
+    return { _id: task._id, title: task.title, description: task.description };
   }
 }
