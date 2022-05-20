@@ -11,11 +11,14 @@ const createTaskFx = taskServiceDomain.createEffect<CreateTaskData, void>(
   createTaskRequest
 );
 
+
 export const taskService = {
   inputs: {
     GetDesk: deskService.inputs.GetDesk,
     reloadDesk: deskService.inputs.getDesk,
     createTask,
     createTaskFx,
+
   },
+
 };

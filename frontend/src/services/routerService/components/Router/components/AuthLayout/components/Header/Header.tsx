@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import { Button } from "../../../../../../../../shared/components/Button";
 import { Layout } from "../../../../../../../../shared/components/Layout";
 import {
+  AssociatingWrapper,
+  ImageWrapper,
   Logo,
   StyledHeader,
   UserName,
-  UserWrapper,
   Wrap,
   Wrapper,
 } from "./Header.styled";
@@ -21,9 +22,18 @@ export const Header: FC<HeaderProps> = ({ me, handleSubmit }) => {
             <Link to="/Dashboard">
               <Logo>TodoList</Logo>
             </Link>
-            <UserWrapper>
-              <Link to="/Account">
-              <UserName>{me?.name}</UserName>
+
+            <AssociatingWrapper>
+              <Link
+                to="/Account"
+                style={{ display: " flex", alignItems: "center" }}
+              >
+                <ImageWrapper>
+                  <img
+                    src={`http://localhost:9000/api/files/image/${me?.avatar}`}
+                  />
+                </ImageWrapper>
+                <UserName>{me?.name}</UserName>
               </Link>
               <Button
                 size="sm"
@@ -32,7 +42,7 @@ export const Header: FC<HeaderProps> = ({ me, handleSubmit }) => {
               >
                 Logout
               </Button>
-            </UserWrapper>
+            </AssociatingWrapper>
           </Wrapper>
         </Layout>
       </StyledHeader>

@@ -8,7 +8,7 @@ import { NotAuthLayout } from "./components/NotAuthLayout";
 import { AuthLayout } from "./components/AuthLayout";
 import { authService } from "../../../authService";
 import { useStore } from "effector-react";
-import {  DashboardPageContainer } from "../../../dashboardService/dashboardService.container";
+import { DashboardPageContainer } from "../../../dashboardService/dashboardService.container";
 import { DeskContainer } from "../../../deskService/deskService.container";
 import { AccountPageContainer } from "../../../userService/userService.container";
 
@@ -22,19 +22,19 @@ export const Router = () => {
       <AuthGate />
       <Routes>
         {!isAuth && (
-          <Route path="/" element={<NotAuthLayout />}>
+          <Route element={<NotAuthLayout />}>
             <Route path="/SignUp" element={<SignUpPageContainer />} />
             <Route path="/SignIn" element={<SignInPageContainer />} />
-            <Route index element={<GreetingPageContainer />} />
+            <Route path="/" element={<GreetingPageContainer />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Route>
         )}
         {isAuth && (
-          <Route path="/" element={<AuthLayout />}>
+          <Route element={<AuthLayout />}>
             <Route path="/Dashboard" element={<DashboardPageContainer />} />
-            <Route path="Account" element={<AccountPageContainer/>}/>
-            <Route path="/Desk/:id" element={<DeskContainer/>}/>
-            <Route path="*"  element={<Navigate to="/Dashboard" />} />
+            <Route path="Account" element={<AccountPageContainer />} />
+            <Route path="/Desk/:id" element={<DeskContainer />} />
+            <Route path="*" element={<Navigate to="/Dashboard" />} />
           </Route>
         )}
       </Routes>

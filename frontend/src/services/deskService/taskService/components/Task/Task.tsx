@@ -6,11 +6,12 @@ export const Task: FC<TaskProps> = ({
   title,
   dragRef,
   isDragging,
+  
 }) => {
   return (
     <>
     
-      <TaskWrapper ref={dragRef} isDragging={isDragging}>
+      <TaskWrapper ref={dragRef} isDragging={isDragging} >
         {title}
       </TaskWrapper>
     </>

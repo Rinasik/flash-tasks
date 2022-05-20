@@ -1,8 +1,6 @@
 import { Form, Input } from "antd";
-import { useFormik } from "formik";
 import { FC } from "react";
 import { HexColorPicker } from "react-colorful";
-import { ColumnCreateDto } from "../../../../../../../api/types";
 import { ColorPickerWrapper } from "./ColumnForm.styled";
 import { ColumnFormProps } from "./ColumnForm.types";
 

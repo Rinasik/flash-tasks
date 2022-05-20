@@ -2,7 +2,7 @@ import { createDomain } from "effector";
 import { createGate } from "effector-react";
 import { PatchUserDto, UserResponseDto } from "../../api/types";
 import { getMe, setAvatarRequest } from "./userService.api";
-import { IAvatarRequest, ISetAvatar, User } from "./userService.types";
+import { AvatarPayload, SetAvatarPayload, User } from "./userService.types";
 
 const userServiceDomain = createDomain("userService");
 
@@ -17,13 +17,11 @@ const $me = userServiceDomain.createStore<User>({
   avatar: "",
 });
 
-const setAvatar = userServiceDomain.createEvent<IAvatarRequest>();
-const setAvatarFx = userServiceDomain.createEffect<ISetAvatar, PatchUserDto>(
+const setAvatar = userServiceDomain.createEvent<AvatarPayload>();
+const setAvatarFx = userServiceDomain.createEffect<SetAvatarPayload, PatchUserDto>(
   setAvatarRequest
 );
 
-const setAvatarFailed = setAvatarFx.failData;
-const setAvatarSuccess = setAvatarFx.doneData;
 
 export const userService = {
   inputs: {
@@ -34,7 +32,5 @@ export const userService = {
   },
   outputs: {
     $me,
-    setAvatarFailed,
-    setAvatarSuccess,
   },
 };

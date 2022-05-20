@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { UploadAvatarProps } from "../../uploadAvatarService.types";
 import { Wrapper } from "./UploadAvatarInput.styled";
+import { Upload } from "react-bootstrap-icons";
 
 export const UploadAvatarInput: FC<UploadAvatarProps> = ({ handleChange }) => {
   return (
@@ -25,7 +26,10 @@ export const UploadAvatarInput: FC<UploadAvatarProps> = ({ handleChange }) => {
             event.preventDefault();
             event.stopPropagation();
           }}
-        ></Wrapper>
+        >
+          <Upload size={"22px"} />
+          Drop your file here or click to choose
+        </Wrapper>
       </label>
     </>
   );
