@@ -88,6 +88,20 @@ export class TasksService {
   }
 
   async deleteTask(id: string) {
+    const task = await this.taskModel.findById(id);
+
+    const desk = await this.deskModel.findById(task.desk);
+
+    desk.columns = desk.columns.map((column) => {
+      if (task.column.toString() !== column._id) return column;
+
+      column.tasks = column.tasks.filter((elem) => elem._id !== task._id);
+
+      return column;
+    });
+
+    await desk.save();
+
     return await this.taskModel.findByIdAndDelete(id);
   }
 
