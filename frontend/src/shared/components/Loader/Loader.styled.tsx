@@ -23,10 +23,10 @@ export const LoaderWrapper = styled.div`
   width: 64px;
   height: 64px;
   margin: 8px;
-  border: 8px solid #fff;
+  border: 8px solid var(--main-color);
   border-radius: 50%;
   animation: ${loaderFrames} 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: #fff transparent transparent transparent;
+  border-color: var(--main-color) transparent transparent transparent;
 
   > div:nth-child(1) {
     animation-delay: -0.45s;

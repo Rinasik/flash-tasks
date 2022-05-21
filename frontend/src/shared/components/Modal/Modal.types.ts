@@ -7,4 +7,5 @@ export interface ModalProps extends BaseLayoutProps {
     customContent?: boolean;
     width?: number;
     pending?: boolean;
+    minHeight?: string;
 }

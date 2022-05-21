@@ -8,7 +8,7 @@ export const DisplayTaskModal: FC<DisplayTaskModalProps> = ({
   handleClosingModal,
 }) => {
   return (
-    <Modal show={show} onHide={handleClosingModal}>
+    <Modal show={show} onHide={handleClosingModal} title={"Edit chosen task"} minHeight='90px'>
       <DisplayTaskFormContainer />
     </Modal>
   );

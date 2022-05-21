@@ -1,5 +1,4 @@
-import { ColumnResponseDto, DeskResponseDto, ReplaceTaskRequestPayloadDto } from "../../api/types";
-
+import { DeskResponseDto, ReplaceTaskRequestPayloadDto } from "../../api/types";
 
 export interface Desk extends DeskResponseDto {}
 
@@ -13,6 +12,4 @@ export interface DeskPageProps {
   handleOpeningModal: () => void;
 }
 
-export interface IReplaceTask extends ReplaceTaskRequestPayloadDto {
-
-}
+export interface IReplaceTask extends ReplaceTaskRequestPayloadDto {}

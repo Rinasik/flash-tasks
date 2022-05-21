@@ -16,7 +16,7 @@ export const Modal: FC<ModalProps> = ({
   children,
   onHide,
   show,
-  customContent,
+  minHeight,
   title,
 }) => {
   useEffect(() => {
@@ -31,7 +31,7 @@ export const Modal: FC<ModalProps> = ({
   }, [show]);
 
   return show ? (
-    <Wrap>
+    <Wrap >
       <ModalWrap>
         <BackgroundWrap
           onClick={onHide}
@@ -46,7 +46,7 @@ export const Modal: FC<ModalProps> = ({
               </Close>
             )}
           </CloseWrapper>
-          <Content>{children}</Content>
+          <Content style={{ minHeight: `${minHeight}` }}>{children}</Content>
         </StyledModal>
       </ModalWrap>
     </Wrap>
