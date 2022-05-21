@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { DeskDocument } from 'src/desks/schemas/desk.schema';
 import { CreateTaskDto } from './dto/create-task.dto';
+import { PatchTaskDto } from './dto/patch-task.dto';
 import { ReplaceTaskRequestPayloadDto } from './dto/replace-task.dto';
 import { TaskResponseDto } from './dto/task-response.dto';
 import { Task, TaskDocument } from './schemas/task.schema';
@@ -78,6 +79,21 @@ export class TasksService {
   async getTaskById(id: string): Promise<TaskResponseDto> {
     const task = await this.taskModel.findById(id);
 
-    return { _id: task._id, title: task.title, description: task.description };
+    return {
+      _id: task._id,
+      title: task.title,
+      description: task.description,
+      preview: task.preview,
+    };
+  }
+
+  async deleteTask(id: string) {
+    return await this.taskModel.findByIdAndDelete(id);
+  }
+
+  async patchTask(id: string, patchTaskDto: PatchTaskDto) {
+    return await this.taskModel.findByIdAndUpdate(id, patchTaskDto, {
+      new: true,
+    });
   }
 }

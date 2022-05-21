@@ -7,4 +7,7 @@ export class TaskTinyResponseDto extends Id {
 
   @ApiProperty()
   description: string;
+
+  @ApiProperty()
+  preview?: string;
 }

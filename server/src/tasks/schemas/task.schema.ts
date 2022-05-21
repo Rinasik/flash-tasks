@@ -20,6 +20,9 @@ export class Task {
   @Prop({ required: true, type: SchemaTypes.ObjectId, ref: 'Column' })
   column: Types.ObjectId;
 
+  @Prop({ type: SchemaTypes.String })
+  preview: string;
+
   _id: string;
 }
 

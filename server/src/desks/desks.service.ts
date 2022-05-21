@@ -57,9 +57,10 @@ export class DesksService {
       tasks: tasks
         .filter((task) => task.column.toString() == column._id)
         .map((task) => ({
+          _id: task._id,
           title: task.title,
           description: task.description,
-          _id: task._id,
+          preview: task.preview,
         })),
     }));
 
