@@ -1,7 +1,16 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+} from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Auth, UserId } from 'src/auth/auth.decorator';
 import { CreateTaskDto } from './dto/create-task.dto';
+import { PatchTaskDto } from './dto/patch-task.dto';
 import { ReplaceTaskRequestPayloadDto } from './dto/replace-task.dto';
 import { TaskResponseDto } from './dto/task-response.dto';
 import { TasksService } from './tasks.service';
@@ -28,5 +37,17 @@ export class TasksController {
   @ApiResponse({ type: TaskResponseDto })
   getTask(@Param('id') id: string) {
     return this.tasksService.getTaskById(id);
+  }
+
+  @Delete(':id')
+  @Auth()
+  deleteTask(@Param('id') id: string) {
+    return this.tasksService.deleteTask(id);
+  }
+
+  @Patch(':id')
+  @Auth()
+  patchTask(@Param('id') id: string, @Body() patchTaskDto: PatchTaskDto) {
+    return this.tasksService.patchTask(id, patchTaskDto);
   }
 }

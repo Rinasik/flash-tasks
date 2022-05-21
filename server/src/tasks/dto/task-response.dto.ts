@@ -9,4 +9,7 @@ export class TaskResponseDto {
 
   @ApiProperty()
   description: string;
+
+  @ApiProperty()
+  preview: string;
 }
