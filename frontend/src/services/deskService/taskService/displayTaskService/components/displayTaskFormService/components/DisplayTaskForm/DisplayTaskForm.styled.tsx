@@ -10,3 +10,9 @@ export const Wrapper = styled.div`
 export const ErrorText = styled.div`
   color: red;
 `;
+
+export const ButtonWrapper = styled.div`
+  align-self: flex-end;
+  display: flex;
+  justify-content: center;
+`;

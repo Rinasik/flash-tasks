@@ -1,4 +1,5 @@
 import { createDomain } from "effector";
+import { deskService } from "../../deskService.models";
 import { ITask } from "../taskService.types";
 import {
   IPatchTask,
@@ -30,8 +31,8 @@ const patchTaskFx = displayTaskServiceDomain.createEffect<
   void
 >(patchTaskRequest);
 
-const deleteTask = displayTaskServiceDomain.createEvent();
-const deleteTaskFx = displayTaskServiceDomain.createEffect<string, void>(
+const deleteTask = displayTaskServiceDomain.createEvent<string>();
+const deleteTaskFx = displayTaskServiceDomain.createEffect<string, string>(
   deleteTaskRequest
 );
 

@@ -10,5 +10,5 @@ export const patchTaskRequest = async ({
   id,
 }: IPatchTaskPayload): Promise<void> => await api.patch(`/tasks/${id}`, data);
 
-export const deleteTaskRequest = async (id: string): Promise<void> =>
-  await api.delete(`tasks/${id}`);
+export const deleteTaskRequest = async (id: string): Promise<string> =>
+  (await api.delete(`tasks/${id}`)).data._id;

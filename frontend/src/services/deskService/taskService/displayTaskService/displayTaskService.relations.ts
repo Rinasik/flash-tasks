@@ -15,10 +15,13 @@ forward({
   to: displayTaskService.inputs.getTaskDataFx,
 });
 
+forward({
+  from: displayTaskService.inputs.deleteTaskFx.done,
+  to: displayTaskService.inputs.closeModal,
+});
+
 sample({
-  source: displayTaskService.outputs.$currentTask,
   clock: displayTaskService.inputs.deleteTask,
-  fn: (sourceData) =>  sourceData?._id,
   filter: Boolean,
   target: displayTaskService.inputs.deleteTaskFx,
 });
@@ -31,6 +34,5 @@ sample({
     id: sourceData._id,
     data: clockData,
   }),
-
   target: displayTaskService.inputs.patchTaskFx,
 });

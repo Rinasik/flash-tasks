@@ -22,8 +22,8 @@ sample({
 
 forward({
   from: deskService.inputs.moveTask,
-  to: deskService.inputs.moveTaskFx
-})
+  to: deskService.inputs.moveTaskFx,
+});
 
 deskService.outputs.$desk.on(
   deskService.inputs.moveTask,
@@ -47,6 +47,19 @@ deskService.outputs.$desk.on(
           column.tasks = [...column.tasks, task];
         }
 
+        return column;
+      }),
+    };
+  }
+);
+
+deskService.outputs.$desk.on(
+  deskService.inputs.deleteTaskFx.doneData,
+  (desk, taskId) => {
+    return {
+      ...desk,
+      columns: desk.columns.map((column) => {
+        column.tasks = column.tasks.filter((task) => task._id !== taskId);
         return column;
       }),
     };
