@@ -13,7 +13,3 @@ sample({
   target: taskService.inputs.createTaskFx,
 });
 
-forward({
-  from: taskService.inputs.createTaskFx.doneData,
-  to: taskService.inputs.reloadDesk,
-});

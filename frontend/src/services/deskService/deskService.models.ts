@@ -32,6 +32,7 @@ export const deskService = {
     moveTask,
     moveTaskFx,
     deleteTaskFx: displayTaskService.inputs.deleteTaskFx,
+    patchTaskFx: displayTaskService.inputs.patchTaskFx,
   },
   outputs: {
     $desk,

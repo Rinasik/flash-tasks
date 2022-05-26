@@ -1,18 +1,18 @@
 import { forward, sample } from "effector";
 import { TaskTinyResponseDto } from "../../api/types";
 import { deskService } from "./deskService.models";
+import { taskService } from "./taskService";
 
-deskService.outputs.$desk.on(
-  deskService.inputs.getDeskFx.doneData,
-  (_, desk) => desk
-);
-
-sample({
-  source: deskService.inputs.GetDesk.state.map(({ deskId }) => deskId),
-  clock: deskService.inputs.getDesk,
-  filter: Boolean,
-  target: deskService.inputs.getDeskFx,
-});
+deskService.outputs.$desk
+  .on(deskService.inputs.getDeskFx.doneData, (_, desk) => desk)
+  .on(taskService.inputs.createTaskFx.doneData, (desk, task) => ({
+    ...desk,
+    columns: desk.columns.map((column) => {
+      if (column._id === task.column)
+        column.tasks = [...column.tasks, { ...task, preview: "" }];
+      return column;
+    }),
+  }));
 
 sample({
   clock: deskService.inputs.GetDesk.open.map(({ deskId }) => deskId),
@@ -64,4 +64,20 @@ deskService.outputs.$desk.on(
       }),
     };
   }
+);
+
+deskService.outputs.$desk.on(
+  deskService.inputs.patchTaskFx.doneData,
+  (desk, task) => ({
+    ...desk,
+    columns: desk.columns.map((column) => {
+      if (column._id === task.column)
+        column.tasks = column.tasks.map((currTask) => {
+          if (currTask._id === task._id) return task;
+          return currTask;
+        });
+
+      return column;
+    }),
+  })
 );

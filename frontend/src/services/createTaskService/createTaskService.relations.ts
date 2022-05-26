@@ -1,4 +1,4 @@
-import { forward, sample } from "effector";
+import { forward } from "effector";
 import { createTaskService } from "./createTaskService.models";
 
 createTaskService.outputs.$modalIsOpen
@@ -9,5 +9,3 @@ forward({
   from: createTaskService.outputs.createTaskSuccess,
   to: createTaskService.inputs.closeModal,
 });
-
-

@@ -1,5 +1,9 @@
 import { ConnectDragSource } from "react-dnd";
-import { CreateTaskDto, TaskResponseDto, TaskTinyResponseDto } from "../../../api/types";
+import {
+  CreateTaskDto,
+  TaskResponseDto,
+  TaskTinyResponseDto,
+} from "../../../api/types";
 
 export interface TaskProps {
   handleOpeningModal: (taskId: string) => void;
@@ -18,10 +22,10 @@ export interface TaskDescriptionModalProps {
   taskData: string;
 }
 
-export interface ITinyTask extends TaskTinyResponseDto {}
+export interface ITinyTask extends TaskTinyResponseDto {
+  column?: string;
+}
 
 export interface CreateTaskData extends CreateTaskDto {}
 
 export interface ITask extends TaskResponseDto {}
-
-

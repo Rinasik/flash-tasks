@@ -137,22 +137,16 @@ export interface FullRequestParams extends Omit<RequestInit, "body"> {
   cancelToken?: CancelToken;
 }
 
-export type RequestParams = Omit<
-  FullRequestParams,
-  "body" | "method" | "query" | "path"
->;
+export type RequestParams = Omit<FullRequestParams, "body" | "method" | "query" | "path">;
 
 export interface ApiConfig<SecurityDataType = unknown> {
   baseUrl?: string;
   baseApiParams?: Omit<RequestParams, "baseUrl" | "cancelToken" | "signal">;
-  securityWorker?: (
-    securityData: SecurityDataType | null
-  ) => Promise<RequestParams | void> | RequestParams | void;
+  securityWorker?: (securityData: SecurityDataType | null) => Promise<RequestParams | void> | RequestParams | void;
   customFetch?: typeof fetch;
 }
 
-export interface HttpResponse<D extends unknown, E extends unknown = unknown>
-  extends Response {
+export interface HttpResponse<D extends unknown, E extends unknown = unknown> extends Response {
   data: D;
   error: E;
 }
@@ -170,8 +164,7 @@ export class HttpClient<SecurityDataType = unknown> {
   private securityData: SecurityDataType | null = null;
   private securityWorker?: ApiConfig<SecurityDataType>["securityWorker"];
   private abortControllers = new Map<CancelToken, AbortController>();
-  private customFetch = (...fetchParams: Parameters<typeof fetch>) =>
-    fetch(...fetchParams);
+  private customFetch = (...fetchParams: Parameters<typeof fetch>) => fetch(...fetchParams);
 
   private baseApiParams: RequestParams = {
     credentials: "same-origin",
@@ -190,9 +183,7 @@ export class HttpClient<SecurityDataType = unknown> {
 
   private encodeQueryParam(key: string, value: any) {
     const encodedKey = encodeURIComponent(key);
-    return `${encodedKey}=${encodeURIComponent(
-      typeof value === "number" ? value : `${value}`
-    )}`;
+    return `${encodedKey}=${encodeURIComponent(typeof value === "number" ? value : `${value}`)}`;
   }
 
   private addQueryParam(query: QueryParamsType, key: string) {
@@ -206,15 +197,9 @@ export class HttpClient<SecurityDataType = unknown> {
 
   protected toQueryString(rawQuery?: QueryParamsType): string {
     const query = rawQuery || {};
-    const keys = Object.keys(query).filter(
-      (key) => "undefined" !== typeof query[key]
-    );
+    const keys = Object.keys(query).filter((key) => "undefined" !== typeof query[key]);
     return keys
-      .map((key) =>
-        Array.isArray(query[key])
-          ? this.addArrayQueryParam(query, key)
-          : this.addQueryParam(query, key)
-      )
+      .map((key) => (Array.isArray(query[key]) ? this.addArrayQueryParam(query, key) : this.addQueryParam(query, key)))
       .join("&");
   }
 
@@ -225,9 +210,7 @@ export class HttpClient<SecurityDataType = unknown> {
 
   private contentFormatters: Record<ContentType, (input: any) => any> = {
     [ContentType.Json]: (input: any) =>
-      input !== null && (typeof input === "object" || typeof input === "string")
-        ? JSON.stringify(input)
-        : input,
+      input !== null && (typeof input === "object" || typeof input === "string") ? JSON.stringify(input) : input,
     [ContentType.FormData]: (input: any) =>
       Object.keys(input || {}).reduce((formData, key) => {
         const property = input[key];
@@ -237,17 +220,14 @@ export class HttpClient<SecurityDataType = unknown> {
             ? property
             : typeof property === "object" && property !== null
             ? JSON.stringify(property)
-            : `${property}`
+            : `${property}`,
         );
         return formData;
       }, new FormData()),
     [ContentType.UrlEncoded]: (input: any) => this.toQueryString(input),
   };
 
-  private mergeRequestParams(
-    params1: RequestParams,
-    params2?: RequestParams
-  ): RequestParams {
+  private mergeRequestParams(params1: RequestParams, params2?: RequestParams): RequestParams {
     return {
       ...this.baseApiParams,
       ...params1,
@@ -260,9 +240,7 @@ export class HttpClient<SecurityDataType = unknown> {
     };
   }
 
-  private createAbortSignal = (
-    cancelToken: CancelToken
-  ): AbortSignal | undefined => {
+  private createAbortSignal = (cancelToken: CancelToken): AbortSignal | undefined => {
     if (this.abortControllers.has(cancelToken)) {
       const abortController = this.abortControllers.get(cancelToken);
       if (abortController) {
@@ -306,25 +284,15 @@ export class HttpClient<SecurityDataType = unknown> {
     const payloadFormatter = this.contentFormatters[type || ContentType.Json];
     const responseFormat = format || requestParams.format;
 
-    return this.customFetch(
-      `${baseUrl || this.baseUrl || ""}${path}${
-        queryString ? `?${queryString}` : ""
-      }`,
-      {
-        ...requestParams,
-        headers: {
-          ...(type && type !== ContentType.FormData
-            ? { "Content-Type": type }
-            : {}),
-          ...(requestParams.headers || {}),
-        },
-        signal: cancelToken ? this.createAbortSignal(cancelToken) : void 0,
-        body:
-          typeof body === "undefined" || body === null
-            ? null
-            : payloadFormatter(body),
-      }
-    ).then(async (response) => {
+    return this.customFetch(`${baseUrl || this.baseUrl || ""}${path}${queryString ? `?${queryString}` : ""}`, {
+      ...requestParams,
+      headers: {
+        ...(type && type !== ContentType.FormData ? { "Content-Type": type } : {}),
+        ...(requestParams.headers || {}),
+      },
+      signal: cancelToken ? this.createAbortSignal(cancelToken) : void 0,
+      body: typeof body === "undefined" || body === null ? null : payloadFormatter(body),
+    }).then(async (response) => {
       const r = response as HttpResponse<T, E>;
       r.data = null as unknown as T;
       r.error = null as unknown as E;
@@ -362,9 +330,7 @@ export class HttpClient<SecurityDataType = unknown> {
  *
  * The TodoList API description
  */
-export class Api<
-  SecurityDataType extends unknown
-> extends HttpClient<SecurityDataType> {
+export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDataType> {
   api = {
     /**
      * No description
@@ -389,10 +355,7 @@ export class Api<
      * @name AuthControllerRefresh
      * @request POST:/api/auth/refresh
      */
-    authControllerRefresh: (
-      data: RefreshRequestDto,
-      params: RequestParams = {}
-    ) =>
+    authControllerRefresh: (data: RefreshRequestDto, params: RequestParams = {}) =>
       this.request<any, SignInResponseDto>({
         path: `/api/auth/refresh`,
         method: "POST",
@@ -425,10 +388,7 @@ export class Api<
      * @request PATCH:/api/users
      * @secure
      */
-    usersControllerPatchUser: (
-      data: PatchUserDto,
-      params: RequestParams = {}
-    ) =>
+    usersControllerPatchUser: (data: PatchUserDto, params: RequestParams = {}) =>
       this.request<void, any>({
         path: `/api/users`,
         method: "PATCH",
@@ -445,10 +405,7 @@ export class Api<
      * @name UsersControllerCreateUser
      * @request POST:/api/users
      */
-    usersControllerCreateUser: (
-      data: CreateUserDto,
-      params: RequestParams = {}
-    ) =>
+    usersControllerCreateUser: (data: CreateUserDto, params: RequestParams = {}) =>
       this.request<void, any>({
         path: `/api/users`,
         method: "POST",
@@ -497,10 +454,7 @@ export class Api<
      * @request POST:/api/desks
      * @secure
      */
-    desksControllerCreateDesk: (
-      data: CreateDeskDto,
-      params: RequestParams = {}
-    ) =>
+    desksControllerCreateDesk: (data: CreateDeskDto, params: RequestParams = {}) =>
       this.request<void, any>({
         path: `/api/desks`,
         method: "POST",
@@ -550,10 +504,7 @@ export class Api<
      * @request POST:/api/tasks
      * @secure
      */
-    tasksControllerCreateTask: (
-      data: CreateTaskDto,
-      params: RequestParams = {}
-    ) =>
+    tasksControllerCreateTask: (data: CreateTaskDto, params: RequestParams = {}) =>
       this.request<void, any>({
         path: `/api/tasks`,
         method: "POST",
@@ -571,10 +522,7 @@ export class Api<
      * @request POST:/api/tasks/replaceColumn
      * @secure
      */
-    tasksControllerReplaceTask: (
-      data: ReplaceTaskRequestPayloadDto,
-      params: RequestParams = {}
-    ) =>
+    tasksControllerReplaceTask: (data: ReplaceTaskRequestPayloadDto, params: RequestParams = {}) =>
       this.request<void, any>({
         path: `/api/tasks/replaceColumn`,
         method: "POST",
@@ -624,11 +572,7 @@ export class Api<
      * @request PATCH:/api/tasks/{id}
      * @secure
      */
-    tasksControllerPatchTask: (
-      id: string,
-      data: PatchTaskDto,
-      params: RequestParams = {}
-    ) =>
+    tasksControllerPatchTask: (id: string, data: PatchTaskDto, params: RequestParams = {}) =>
       this.request<void, any>({
         path: `/api/tasks/${id}`,
         method: "PATCH",
@@ -646,10 +590,7 @@ export class Api<
      * @request POST:/api/files/image
      * @secure
      */
-    filesControllerUploadedFile: (
-      data: { image?: File },
-      params: RequestParams = {}
-    ) =>
+    filesControllerUploadedFile: (data: { image?: File }, params: RequestParams = {}) =>
       this.request<void, any>({
         path: `/api/files/image`,
         method: "POST",
@@ -666,10 +607,7 @@ export class Api<
      * @name FilesControllerSeeUploadedFile
      * @request GET:/api/files/image/{path}
      */
-    filesControllerSeeUploadedFile: (
-      path: string,
-      params: RequestParams = {}
-    ) =>
+    filesControllerSeeUploadedFile: (path: string, params: RequestParams = {}) =>
       this.request<void, any>({
         path: `/api/files/image/${path}`,
         method: "GET",

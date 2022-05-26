@@ -1,7 +1,6 @@
 import { api } from "../../../api/axios";
-import { CreateTaskData } from "./taskService.types";
+import { CreateTaskData, ITinyTask } from "./taskService.types";
 
 export const createTaskRequest = async (
   taskData: CreateTaskData
-): Promise<void> => await api.post("/tasks", taskData);
-
+): Promise<ITinyTask> => (await api.post("/tasks", taskData)).data;

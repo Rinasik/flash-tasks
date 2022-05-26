@@ -16,7 +16,10 @@ forward({
 });
 
 forward({
-  from: displayTaskService.inputs.deleteTaskFx.done,
+  from: [
+    displayTaskService.inputs.deleteTaskFx.done,
+    displayTaskService.inputs.patchTaskFx.done,
+  ],
   to: displayTaskService.inputs.closeModal,
 });
 
