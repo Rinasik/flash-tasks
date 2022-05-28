@@ -2,10 +2,14 @@ import styled from "styled-components";
 
 export const Wrap = styled.div<{ color?: string }>`
   background-color: ${({ color }) => color};
-  width: 95%;
+  width: 100%;
   height: 400px;
   border-radius: 10px;
-
+  padding: 0 0 10px;
+  overflow-y: auto;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const NameWrapper = styled.div`
@@ -22,8 +26,6 @@ export const TasksWrapper = styled.div`
   justify-items: center;
   grid-template-columns: 1fr;
   row-gap: 10px;
-
-
 `;
 
 export const DropableTask = styled.div`

@@ -15,3 +15,15 @@ body {
   width: 100%;
   text-align: left;
 }
+
+/*! Firefox */
+html {
+  scrollbar-color: white var(--main-color-light);
+}
+
+/*! Other Browser */
+html {
+  --scrollbarBG: white;
+  --thumbBG: var(--main-color-light);
+  
+}

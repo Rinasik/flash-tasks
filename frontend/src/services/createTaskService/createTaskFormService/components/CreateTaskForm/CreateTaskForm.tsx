@@ -52,7 +52,7 @@ export const CreateTaskForm: FC<CreateTaskFormProps> = ({
         ></Input>
         <ErrorText>{errors.description}</ErrorText>
       </Form.Item>
-      <Form.Item label="ChooseDesk">
+      <Form.Item label="Choose Desk">
         <Select
           style={{ width: "75%" }}
           value={values.columnId}

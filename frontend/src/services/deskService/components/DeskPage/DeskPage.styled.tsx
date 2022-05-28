@@ -18,5 +18,6 @@ export const Desk = styled.div`
 export const ColumnsWrapper = styled.div`
   display: grid;
   justify-items: center;
+  grid-gap: 10px;
   grid-template-columns: repeat(6, 1fr) ;
 `;

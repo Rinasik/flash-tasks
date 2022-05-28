@@ -1,5 +1,5 @@
 import { sample } from "effector";
-import { Desk, GetDeskProps } from "../deskService/deskService.types";
+import { Desk } from "../deskService/deskService.types";
 import { deleteDeskService } from "./deleteDeskService.models";
 
 sample({
