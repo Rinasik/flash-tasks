@@ -15,7 +15,7 @@ const httpsOptions = {
 };
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, { httpsOptions });
 
   app.setGlobalPrefix('api');
 
@@ -32,7 +32,11 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
 
   app.enableCors({
-    origin: ['http://localhost:3000', 'http://localhost:3001'],
+    origin: [
+      'http://localhost:3000',
+      'http://localhost:3001',
+      'https://flash-tasks.vercel.app/',
+    ],
   });
 
   await app.listen(80, () => console.log(`🚀 server has been started`));
