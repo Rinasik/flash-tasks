@@ -6,9 +6,6 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 const httpsOptions = {
-  ca: fs.readFileSync(
-    path.resolve(__dirname, '../certificate/certificate_ca.crt'),
-  ),
   cert: fs.readFileSync(
     path.resolve(__dirname, '../certificate/certificate.crt'),
   ),
@@ -18,7 +15,7 @@ const httpsOptions = {
 };
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule, { httpsOptions });
+  const app = await NestFactory.create(AppModule);
 
   app.setGlobalPrefix('api');
 
