@@ -2,9 +2,23 @@ import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
+import * as fs from 'fs';
+import * as path from 'path';
+
+const httpsOptions = {
+  ca: fs.readFileSync(
+    path.resolve(__dirname, '../certificate/certificate_ca.crt'),
+  ),
+  cert: fs.readFileSync(
+    path.resolve(__dirname, '../certificate/certificate.crt'),
+  ),
+  key: fs.readFileSync(
+    path.resolve(__dirname, '../certificate/certificate.key'),
+  ),
+};
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, { httpsOptions });
 
   app.setGlobalPrefix('api');
 
@@ -24,8 +38,6 @@ async function bootstrap() {
     origin: ['http://localhost:3000', 'http://localhost:3001'],
   });
 
-  await app.listen(80, () =>
-    console.log(`🚀 server has been started`),
-  );
+  await app.listen(80, () => console.log(`🚀 server has been started`));
 }
 bootstrap();
