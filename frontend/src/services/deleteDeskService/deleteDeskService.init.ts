@@ -1,1 +1,0 @@
-import "./deleteDeskService.relations"

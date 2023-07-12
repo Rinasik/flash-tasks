@@ -5,6 +5,7 @@ import { DeskPage } from "./components/DeskPage";
 import { deskService } from "./deskService.models";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
+import "./deskService.relations";
 
 export const DeskContainer = () => {
   const desk = useStore(deskService.outputs.$desk);

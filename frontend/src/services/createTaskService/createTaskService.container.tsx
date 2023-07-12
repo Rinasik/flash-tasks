@@ -2,6 +2,8 @@ import { useEvent, useStore } from "effector-react";
 import { useNetworkErrors } from "../../hooks/useNetworkErrors";
 import { CreateTaskModal } from "./components/CreateTaskModal";
 import { createTaskService } from "./createTaskService.models";
+import "./createTaskService.relations"
+
 
 export const CreateTaskContainer = () => {
   const show = useStore(createTaskService.outputs.$modalIsOpen);

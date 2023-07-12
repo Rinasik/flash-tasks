@@ -2,6 +2,8 @@ import { useEvent, useStore } from "effector-react";
 import { useNetworkErrors } from "../../hooks/useNetworkErrors";
 import { CreateDeskModal } from "./components/CreateDeskModal";
 import { createDeskService } from "./createDeskService.models";
+import "./createDeskService.relations"
+
 
 export const CreateDeskContainer = () => {
   const show = useStore(createDeskService.outputs.$modalIsOpen);

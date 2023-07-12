@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useNetworkErrors } from "../../hooks/useNetworkErrors";
 import { DeleteDesk } from "./components/DeleteDesk";
 import { deleteDeskService } from "./deleteDeskService.models";
+import "./deleteDeskService.relations";
 
 export const DeleteDeskContainer = () => {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ export const DeleteDeskContainer = () => {
       deleteDeskSuccess.watch(() => {
         navigate("/Dashboard");
       }),
-    []
+    [deleteDeskSuccess, navigate]
   );
 
   const handleSubmit = () => {

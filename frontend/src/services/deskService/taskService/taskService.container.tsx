@@ -4,9 +4,13 @@ import { useDrag } from "react-dnd";
 import { Task } from "./components/Task";
 import { displayTaskService } from "./displayTaskService";
 import { TaskContainerProps } from "./taskService.types";
+import "./taskService.relations";
 
-export const TaskContainer: FC<TaskContainerProps> = ({ task, parentColumnId }) => {
-  const handleOpeningModal = useEvent(displayTaskService.inputs.openModal)
+export const TaskContainer: FC<TaskContainerProps> = ({
+  task,
+  parentColumnId,
+}) => {
+  const handleOpeningModal = useEvent(displayTaskService.inputs.openModal);
 
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "task",

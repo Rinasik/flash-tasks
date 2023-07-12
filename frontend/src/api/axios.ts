@@ -1,5 +1,7 @@
 import axios from "axios";
 import { authService } from "../services/authService";
+import "../services/authService/authService.relations";
+
 
 export const api = axios.create({
   baseURL: "http://185.182.111.249/api/",

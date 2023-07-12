@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useNetworkErrors } from "../../../hooks/useNetworkErrors";
 import { UploadAvatarModal } from "./components/UploadAvatarModal";
 import { uploadAvatarService } from "./uploadAvatarService.models";
+import "./uploadAvatarService.relations";
 
 export const UploadAvatarContainer = () => {
   const show = useStore(uploadAvatarService.outputs.$modalIsOpen);
@@ -27,7 +28,7 @@ export const UploadAvatarContainer = () => {
       setAvatarSuccess.watch(() => {
         message.success("Avatar has been successfully changed");
       }),
-    []
+    [setAvatarSuccess]
   );
 
   return (
